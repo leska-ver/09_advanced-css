@@ -1,0 +1,903 @@
+@font-face {
+  font-family: 'Muller';
+  src: url('../fonts/MullerBold.woff2') format('woff2'),
+    url('../fonts/MullerBold.woff') format('woff');
+  font-display: swap;/*мгновенная отрисовка подменного шрифта*/
+  font-weight: 700;
+  font-style: normal;/*Обычное начертание текста.*/
+}
+
+@font-face {
+  font-family: 'Muller';
+  src: url('../fonts/MullerMedium.woff2') format('woff2'),
+    url('../fonts/MullerMedium.woff') format('woff');
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Muller';
+  src: url('../fonts/MullerRegular.woff2') format('woff2'),
+    url('../fonts/MullerRegular.woff') format('woff');
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Muller';
+  src: url('../fonts/MullerLight.woff2') format('woff2'),
+    url('../fonts/MullerLight.woff') format('woff');
+  font-display: swap;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/*****---Базовая стилизация---*****/
+* {/*Минимальный сброс стилей*/
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Muller', sans-serif;/*По умолчанию*/
+  background-color: #E5E5E5;/*Фонт сайта*/
+}
+
+section {
+  padding-top: 70px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .4s ease;
+}
+
+a:hover, .btn:hover { 
+  color: #917df0;
+}
+
+a:hover path {
+  stroke: #917df0; 
+}
+
+img {
+  max-width: 100%;/*Ширина по умолчанию*/
+  display: block;/*Убрали нижний пробел*/ 
+}
+
+h2 {
+  padding-left: 40px;
+}
+
+h2, h3, p {
+  margin: 0;
+  color: rgba(0,0,0,1);
+  word-wrap: break-word;/*Перенос слов*/
+  line-break: auto;/*Перенос китайских слов*/
+}
+
+label, option {
+  word-wrap: break-word;/*Перенос слов*/
+  line-break: auto;/*Перенос китайских слов*/
+}
+
+:root {/*Глобальное*/
+  --color: rgba(255,255,255,1);/*var*/
+  --background-color: rgba(255,255,255,1);/*var*/
+}
+
+.container {
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 1200px;/*Максимальная ширина с учётом паддинга*/
+}
+
+.btn {
+  margin-top: 15px;/*Кнопку удалишь и маргин уйдёт*/
+  padding: 10px 15px;/*Отступы для гибкости по умолчанию*/
+  border: 1px solid rgba(204, 153, 51, 1);
+  border-radius: 15px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+  color:rgba(204, 153, 51, 1);
+  background-color: var(--background-color);
+  cursor: pointer;
+  transition-property: box-shadow, border-radius; /*color в ашке. без border-bottom - тормозить*/
+  transition-duration: .4s;
+  transition-timing-function: ease;
+}
+
+.btn:hover {
+  border: 1px solid#917df0;
+  box-shadow: 0px 5px 5px -5px #917df0;
+  border-bottom: 1px solid #917df0;
+  border-radius: 15px;
+}  
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.float {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.clearfix {
+  clear: both;
+  float: none;
+}
+
+.border-radius {/*Общий класс модификатор*/
+  border-radius: 15px;
+}
+
+.border-radius-top-right {/*Общий класс модификатор*/
+  border-radius: 15px 15px 0 0;
+}
+
+/*---header(Шапка)---*/
+.header {
+  height: 155px;
+}
+
+.header-above {/*Верхний блок*/
+  display: flex;
+  justify-content: space-between;/*Всем блокам одинаковый отступ*/
+  align-items: center;
+  padding: 13px 0;
+}
+
+.header-above-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  margin-right: auto;
+}
+
+.header-logo-img {/**/
+  width: 260px;
+  height: 55px;
+  transition-property: box-shadow, border-bottom, border-radius;
+  transition-duration: .4s;
+  transition-timing-function: ease;
+}
+
+.header-logo-img:hover {
+  box-shadow: 0px 5px 5px -5px #d29e34;
+  border-bottom: 1px solid rosybrown;
+  border-radius: 15px;
+}
+
+.header-telephone {
+  margin-left: 40px;
+  font-weight: 500;
+  color: rgba(102,102,102,1);  
+}
+
+.header-above-arrow {
+  padding-left: 27px;
+  font-weight: 400;
+  color: rgba(204, 153, 51, 1);  
+}
+
+.header-above-right path {
+  transition: fill .4s ease;
+}
+
+.header-above-right:hover path {
+  fill: #917df0;
+  stroke: none;/*Жирнел*/
+}
+
+
+.header-below {/*Нижний блок*/
+  display: flex;
+  justify-content: space-between;/*Всем блокам одинаковый отступ*/
+  padding: 0 45px;
+  height: 70px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;  
+  background-color: var(--background-color);/*:root*/ 
+}
+
+.header-below-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-nav-list {
+  display: flex;
+}
+
+.header-nav-item:not(:last-child) {/*Кроме последнего*/
+  margin-right: 35px;
+}
+
+.header-nav-link {
+  padding-right: 10px;
+  color:rgba(102,102,102,1);
+  word-wrap: break-word;/*Перенос слов*/
+  line-break: auto;/*Перенос китайских слов*/
+}
+
+.header-below-right {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  padding-left: 55px;
+  border-left: 1px solid #e1e1e1;
+}
+
+.header-btn-tour {
+  margin-top: 0;
+}
+
+.header-btn-call {
+  margin-top: 0;
+  margin-left: 40px;
+}
+
+/*---section-deadline(Спецпредложения)---*/
+.section-heading {/*h2*/
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1;
+  color: rgba(51,51,51,1)
+}
+
+.section-deadline-div {
+  display: flex;
+  padding-top: 20px;
+}
+
+.section-deadline-list-left {
+  flex-basis: 50%;
+  margin-right: 23px;
+  display: flex;/*Для детей maldivi и krit*/
+  flex-direction: column;/*Для гибкости у детей с flex-basis*/
+}
+
+.section-deadline-maldivi-jpg {
+  position: relative; /*DARKEN */
+  flex-basis: 50%;/*Из-за родителя в column ширина стала высотой*/
+  margin-bottom: 25px;/*Отступ между картинками*/
+  width: 100%;
+  background-image: url("../img/maldivi.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.section-deadline-maldivi-jpg::before, .section-deadline-krit-jpg::before {/*DARKEN */
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: linear-gradient(90deg, rgba(48, 64, 89, 0.84) -2.9%, rgba(53, 65, 83, 0) 65.7%);
+  border-radius: 15px;
+}
+
+.section-deadline-card {
+  position: relative;/*DARKEN */
+  padding: 40px;
+  z-index: 3;
+  transition: opacity .4s ease;
+}
+
+.section-deadline-card:hover {
+  opacity: 0.7;
+}
+
+.section-deadline-h3 {
+  padding: 0 15px 15px 0;
+  max-width: 320px;/*Для гибкости*/
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--color);/*:root*/ 
+}
+
+.section-deadline-price {
+  padding: 0 15px 47px 0;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--color);/*:root*/ 
+  opacity: 0.8;
+}
+
+.section-deadline-in-detail {
+  display: flex;/*Для гибкости max-width*/
+  max-width: 100px;/*Ограничила для гибкости*/
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+  color:rgba(255, 204, 102, 1)
+}
+
+.section-deadline-next {
+  padding-left: 5px;
+  transform: translateY(-1.2px);
+}
+
+.section-deadline-krit-jpg {
+  position: relative; /*DARKEN */
+  flex-basis: 50%;/*Из-за родителя в column ширина стала высотой*/
+  width: 100%;
+  background-image: url("../img/krit.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.section-deadline-list-right {
+  flex-basis: 50%;
+}
+
+.section-deadline-nomer-jpg {
+    position: relative; /*DARKEN */	
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    min-height: 100%;
+    background-image: url("../img/luxury-nomer.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;  
+  }
+  
+  .section-deadline-nomer-jpg::before {/*DARKEN */
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: linear-gradient(-90deg, rgba(48, 64, 89, 0.84) -2.9%, rgba(53, 65, 83, 0) 75.7%);
+    border-radius: 15px; 
+    /* transform: rotate(-90deg);  *//*Вылезает за нижнюю границу*/
+  }    
+
+.section-deadline-luxury-text {
+  font-size: 60px;
+  line-height: 1;
+}
+
+.big-p {
+  font-size: 30px;
+  line-height: 1;
+}
+
+/*---section-modernizacion(О нас)---*/
+.section-modernizacion-text {
+  padding-top: 20px;
+  max-width: 888px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 2;
+}
+
+/*---section-servicios(Услуги)---*/
+.section-servicios-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}
+
+.section-servicios-item {
+  margin-bottom: 25px;
+  width: 568px;
+  flex: 0 1 auto;
+  overflow: hidden;/*Отображается только область внутри элемента, остальное будет скрыто.*/
+  background-color: #FFF;
+  background-size: 570px;
+  background-repeat: no-repeat;  
+}
+
+.serv-img {
+  height: 200px;
+  background-size: cover;
+}
+
+.section-servicios-item:nth-last-child(2n) {/*Каждый второй*/
+  margin-right: 23px;
+}
+
+.section-servicios_padding {
+  padding: 45px;
+}
+
+.section-servicios-arrow {    
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 2;
+  color: rgba(204,153,51,1);
+}
+
+.section-servicios-next {
+  display: inline-block;/*Из-за спана*/
+  padding-left: 2px;
+  transform: translateY(3px);/*Спустили ниже*/
+}
+
+.section-servicios-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 2;
+}
+
+/*---section-ventajas(Преимущества)---*/
+.section-ventajas {
+  padding-top: 55px;
+}
+
+.section-ventajas-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 30px;
+}
+
+.section-ventajas-item {/*Все лишки*/
+  flex: 0 1 23.5%;
+  margin-right: 23px;
+  margin-bottom: 25px;
+  padding: 40px;
+  background-color: var(--background-color);/*:root*/ 
+}
+
+.section-ventajas-item:nth-child(4n) {/*Каждый четвёртый*/
+  margin-right: 0;
+}
+
+.section-ventajas-svg {
+  width: 66px;
+  height: 66px;
+  background-repeat: no-repeat;
+}
+
+.section-ventajas-bathtub-svg {
+  background-image: url("../img/bathtub.svg");  
+}
+
+.section-ventajas-text {
+  padding-top: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 2;
+}
+
+.section-ventajas-colgador-svg {
+  background-image: url("../img/colgador.svg"); 
+}
+
+.section-ventajas-batería-svg {
+  background-image: url("../img/batería.svg"); 
+}
+
+.section-ventajas-barril-svg {
+  background-image: url("../img/barril.svg"); 
+}
+
+.section-ventajas-parking-svg {
+  background-image: url("../img/parking.svg"); 
+}
+
+.section-ventajas-reception-svg {
+  background-image: url("../img/reception.svg"); 
+}
+
+.section-ventajas-security-box-svg {
+  background-image: url("../img/security-box.svg"); 
+}
+
+.section-ventajas-swimming-pool-svg {
+  background-image: url("../img/swimming-pool.svg"); 
+}
+
+/*---section-placement(Размещение)---*/
+.section-placement {
+  padding-top: 55px;
+}
+
+.section-placement-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 30px;
+}
+
+.section-placement-item {/*Все лишки*/
+  flex: 0 1 32%;
+  margin-right: 23px;
+  margin-bottom: 25px;
+  min-width: 374px;
+  background-color: #fff;
+}
+
+.section-placement-item:nth-child(3n) {/*Каждый третий*/
+  margin-right: 0;
+}
+
+.section-placement-item:last-child {/*Последний*/
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-image: url("../img/mountain.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;   
+  z-index: 1;
+}  
+
+.section-placement-item a::after {
+  position: absolute;
+  content: "";
+  top: 0;  
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(-90deg, rgba(48, 64, 89, 0.84) -2.9%, rgba(53, 65, 83, 0) 65.7%);
+  border-radius: 15px;
+  z-index: -1;
+}
+
+.section-placement-jpg {
+  width: 100%;
+  height: 217px;
+}
+
+.section-placement-description {
+  padding: 35px 45px 41px 45px;
+}
+
+.section-placement-divblock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-placement-block-price {
+  padding: 2px;
+  width: 150px;
+  word-wrap: break-word;
+  line-break: auto;
+}
+
+.section-placement-span-gray {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+  color: gray;  
+}
+
+.section-placement-strong {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.section-placement-rating-yellow-svg, .section-placement-rating-gray-svg {
+  display: inline;/*Переназначили у общего класса img с block*/
+}
+
+.section-placement-text {
+  padding: 16px 45px 8px 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.section-placement-text-gray {
+  padding: 8px 40px 8px 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+  color: rgba(153,153,153,1);
+}
+
+.section-placement-description-arrow {
+  padding: 5px 30px 20px 45px;
+}
+
+.section-placement-arrow {
+  padding: 5px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 2;
+  word-wrap: break-word;/*Перенос слов*/
+  line-break: auto;/*Перенос китайских слов*/
+  color: var(--color);/*:root*/ 
+}
+
+/*---section-booking(Хочу тур)---*/
+.section-booking {
+  padding-top: 55px;
+  box-sizing: border-box;
+}
+
+.section-booking-fon {
+  margin: 0 auto;
+  padding: 38px 45px 71px 45px;
+  max-width: 1170px;
+  background-color: #E9E9E9; 
+
+}
+
+.section-heading-bottom {
+  margin-bottom: 20px;
+  padding-left: 0;
+}
+
+.section-booking-form {
+  display: flex;
+  justify-content: space-between;
+  padding: 31px 28px;
+  background-color: var(--background-color);/*:root*/ 
+}
+
+.section-booking-form-left {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.section-booking-form-border {
+  margin-right: 20px;
+  padding-right: 20px;
+  border-right: 1px solid #e1e1e1;
+  width: 100%;
+}
+
+.section-booking-label {
+  display: block;
+  padding-bottom: 15px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: rgba(0,0,0,1);
+  cursor: pointer;
+}
+
+.section-booking-input {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+  color: rgba(0,0,0,1);
+} 
+
+select {/*Позиционирования кастомной стрелочки*/
+  position: relative;
+}
+
+.section-booking-locality {
+  display: block;
+  margin-left: -5px;
+  border: none;
+  width: 100%;
+  -webkit-appearance: none;/*Отключаем стрелку в Google*/
+  -moz-appearance: none;/*Отключаем стрелку в Лисе*/
+  appearance: none;/*Отключаем стрелку у всех браузеров*/
+  background-image: url("../img/strelka-vniz.svg"); /*Ставим свою стрелку*/
+  background-repeat: no-repeat;
+  background-position: right center;
+  cursor: pointer;  
+}
+
+.section-booking-date {
+  border: none;
+  cursor: pointer;
+}
+
+.id-number {/*Рамка Ночь и Турист*/
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid #CCC;
+  width: 100%;
+  cursor: pointer;
+}
+
+.section-booking-form-btn {
+  margin-top: 0;
+  padding: 13px 30px;
+}
+
+/*---section-contact(Контакты)---*/
+.section-contact {
+  margin-bottom: 20px;
+}
+
+.section-contact-div {
+  display: flex;
+  margin-top: 25px;
+  padding: 45px;
+  background-color: var(--background-color);/*:root*/ 
+}
+
+.section-contact-list {
+  margin-right: 50px;
+}
+
+.section-contact-item {
+  display: flex;
+  border-bottom: 1px solid #C4C4C4;
+}
+
+.section-contact-item:not(:last-child) {/*Кроме последнего*/
+  margin-bottom: 25px;
+}
+
+.section-contact-heading {
+  padding-right: 23px;
+  padding-bottom: 23px;
+  width: 160px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  color: rgba(0,0,0,1);
+}
+
+.section-contact-text {  
+  padding-right: 1px;
+  padding-bottom: 23px;
+  width: 230px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(0,0,0,1);  
+}
+
+.section-contact-info {
+  padding-bottom: 23px;
+  width: 230px;
+}
+
+.section-contact-link {
+  padding-right: 1px;  
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(204,153,51,1); 
+}
+
+.section-contact-span-gray {
+  color: rgba(153,153,153,1);
+}
+
+.section-contact-btn {
+  padding: 27px 30px;
+  font-weight: 700;
+}
+
+.section-contact-img {/*Для гибкости reception.jpg*/
+  display: flex;
+  width: 100%;
+}
+
+.section-contact-reception-jpg {
+  flex-grow: 1;/*Для гибкости*/
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/*---Footer(Подвал)---*/
+.footer {
+  margin-bottom: 20px;
+}
+
+.container-footer {
+  position: relative;/*Для солнца*/
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 45px 52px;
+  max-width: 1170px;
+  background-color: rgba(51,51,51,1);
+  background-image: url("../img/solnse.png");
+  background-repeat: no-repeat;
+  background-size: 260px;
+  background-position: 700px bottom;
+}
+
+.footer-info {
+  flex: 0 1 34%
+}
+
+.footer-text {
+  padding-right: 55px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #FFF;
+}
+
+.footer-link, .footer-link-number {
+  color: #CC9933;
+}
+
+.footer-text-bottom {
+  margin-bottom: 35px;
+}
+
+.footer-item-span {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #FFF;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-item:not(:last-child) {/*Кроме последнего*/
+  margin-bottom: 30px;
+}
+
+.footer-social {
+  width: 23%;
+}
+
+.footer-list-icone {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.footer-item-icone:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.footer-icone {/*Общие параметры для соцсетей иконок*/
+  display: block;
+  width: 25px;
+  height: 25px;  
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.footer-icone:hover {
+  opacity: 0.7;
+} 
+
+.footer-icone-tripadvisor-svg {
+  background-image: url("../img/tripadvisor.svg"); 
+}
+
+.footer-icone-twitter-svg {
+  background-image: url("../img/twitter.svg"); 
+}
+
+.footer-icone-facebook-svg {
+  background-image: url("../img/facebook.svg"); 
+}
+
+.footer-icone-vk-svg {
+  background-image: url("../img/vk.svg"); 
+}
+
+.footer-icone-instagram-svg {
+  background-image: url("../img/instagram.svg"); 
+}
+
+
